@@ -7,7 +7,7 @@
 		Home
 	</div>
 	<div class="card-body">
-		Content2
+		Content3
 	</div>
 </div>
 
