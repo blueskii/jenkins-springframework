@@ -14,7 +14,7 @@ pipeline {
 
             post {
                 success {
-                    sh "curl -v -u admin:tomcat -T target/*.war 'http://kosa402.iptime.org:50003/manager/text/deploy?path=jenkins-springframework2&update=true'"    
+                    sh "curl -v -u admin:tomcat -T target/*.war 'http://kosa402.iptime.org:50003/manager/text/deploy?path=/jenkins-springframework2&update=true'"    
                 }
             }
         }
