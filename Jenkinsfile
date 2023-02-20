@@ -7,9 +7,9 @@ pipeline {
     }
 
     stages {
-        stage('Build') {
+        stage('----------Build-----------') {
             steps {
-            	echo "success"
+            	echo "*** success ***"
             	
                 // Get some code from a GitHub repository
                 git 'https://github.com/blueskii/jenkins-springframework/'
