@@ -6,7 +6,7 @@ pipeline {
     }
 
     stages {
-        stage('----------Build-----------') {
+        stage('Build') {
             steps {
                 git 'https://github.com/blueskii/jenkins-springframework/'
                 sh "mvn -Dmaven.test.failure.ignore=true clean package"
@@ -14,8 +14,7 @@ pipeline {
 
             post {
                 success {
-                    echo "success"
-                    //CURL_RESPONSE=$(curl -v -u "admin:tomcat" -T target/*.war "http://kosa402.iptime.org:50003/manager/text/deploy?path=/jenkins-springframework2&update=true")    
+                    CURL_RESPONSE=$(curl -v -u "admin:tomcat" -T target/*.war "http://kosa402.iptime.org:50003/manager/text/deploy?path=/jenkins-springframework2&update=true")    
                    
                     /*
                     CURL_RESPONSE="FAIL"
