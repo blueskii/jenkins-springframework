@@ -14,18 +14,8 @@ pipeline {
 
             post {
                 success {
-                    $("curl -v -u admin:tomcat -T target/*.war 'http://kosa402.iptime.org:50003/manager/text/deploy?path=/jenkins-springframework2&update=true'" )   
-                
-                	/*
-                	CURL_RESPONSE=$(curl -v -u "admin:tomcat" -T target/*.jar "http://kosa402.iptime.org:50003/manager/text/deploy?path=/jenkins-springframework2&update=true")    
-                    if [[ $CURL_RESPONSE == *"FAIL"* ]]; then
-                      echo "war deployment failed"
-                      exit 1
-                    else    
-                      echo "war deployed successfully "
-                      exit 0
-                    fi
-                    */
+                    CURL_RESPONSE=${sh("curl -v -u admin:tomcat -T target/*.war 'http://kosa402.iptime.org:50003/manager/text/deploy?path=/jenkins-springframework2&update=true'")}    
+                	echo CURL_RESPONSE
                 }
             }
         }
