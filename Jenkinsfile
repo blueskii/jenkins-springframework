@@ -16,7 +16,7 @@ pipeline {
                 success {
                 	script {
 	                	RESPONSE = sh (
-	                		script: "curl -v -u admin:tomcat -T target/*.war 'http://blueskii.synology.me:50003/manage/text/deploy?path=/jenkins-springframework&update=true'", 
+	                		script: "curl -v -u admin:tomcat -T target/*.war 'http://blueskii.synology.me:50003/manager/text/deploy?path=/jenkins-springframework&update=true'", 
 	                		returnStdout: true
 	                	).trim()
 	                	
@@ -24,7 +24,7 @@ pipeline {
 	                	echo "${RESPONSE}"
 	                	echo "-----------------3"
 	                	
-	                	if(RESPONSE.contains("OK")) {
+	                	if(RESPONSE.startsWith("OK")) {
 	                	   echo "MyOK"       
 	                	} else {
 	                	   echo "MyFail"   
