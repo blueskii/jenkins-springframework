@@ -9,7 +9,7 @@ pipeline {
         stage("Build") {
             steps {
                 git "https://github.com/blueskii/jenkins-springframework/"
-                sh "mvn -Dmaven.test.failure.ignore=true clean package"
+                sh "mvn clean package"
             }
 
             post {
@@ -20,9 +20,9 @@ pipeline {
 	                		returnStdout: true
 	                	).trim()
 	                	
-	                	echo "-----------------2"
+	                	echo "-----------------3"
 	                	echo "${CURL_RESPONSE}"
-	                	echo "-----------------2"
+	                	echo "-----------------3"
 	                }
                 }
             }
