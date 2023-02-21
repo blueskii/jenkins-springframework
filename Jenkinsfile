@@ -24,7 +24,7 @@ pipeline {
 	                	echo "${RESPONSE}"
 	                	echo "-----------------3"
 	                	
-	                	if(RESPONSE == "*OK*") {
+	                	if(RESPONSE.contains("OK")) {
 	                	   echo "MyOK"       
 	                	} else {
 	                	   echo "MyFail"   
