@@ -16,19 +16,17 @@ pipeline {
         stage("Deploy") {
             steps {
                 script {
-                    RESPONSE = sh (
+                    RESPONSE = sh(
                 		script: "curl -v -u admin:tomcat -T target/*.war 'http://blueskii.synology.me:50003/manager/text/deploy?path=/jenkins-springframework&update=true'", 
                 		returnStdout: true
                 	).trim()
                 	
-                	echo "-----------------3"
-                	echo "${RESPONSE}"
-                	echo "-----------------3"
-                	
                 	if(RESPONSE.startsWith("OK")) {
-                	   echo "MyOK"       
+                	   echo "OK"       
+                	   sh("exit 0")
                 	} else {
-                	   echo "MyFail"   
+                	   echo "Fail"
+                	   sh("exit 1")   
                 	}
                 }
             }
