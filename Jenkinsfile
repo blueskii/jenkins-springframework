@@ -1,6 +1,8 @@
 pipeline {
+	//Execute this Pipeline or any of its stages, on any available agent
     agent any
 
+	//Declarative Tool
     tools {
         maven "Maven3.8"
     }
@@ -8,7 +10,10 @@ pipeline {
     stages {
         stage("Build") {
             steps {
+            	//Checkout from SCM(git)
             	git "https://github.com/blueskii/jenkins-springframework/"
+            	
+            	//Build
 				sh "mvn clean package"
             }
         }
