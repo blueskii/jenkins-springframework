@@ -20,7 +20,9 @@ pipeline {
 	                		returnStdout: true
 	                	).trim()
 	                	
+	                	echo "-----------------"
 	                	echo "${CURL_RESPONSE}"
+	                	echo "-----------------"
 	                }
                 }
             }
