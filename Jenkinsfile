@@ -8,13 +8,8 @@ pipeline {
     stages {
         stage("Build") {
             steps {
-            	step("step1") {
-            	    git "https://github.com/blueskii/jenkins-springframework/"
-            	}
-
-                step("step2") {
-                    sh "mvn clean package"
-                }
+            	git "https://github.com/blueskii/jenkins-springframework/"
+				sh "mvn clean package"
             }
         }
         
