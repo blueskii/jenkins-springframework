@@ -21,6 +21,7 @@ pipeline {
         stage("Deploy") {
             steps {
                 script {
+                	//Deploy
                     RESPONSE = sh(
                 		script: "curl -v -u admin:tomcat -T target/*.war 'http://blueskii.synology.me:50003/manager/text/deploy?path=/jenkins-springframework&update=true'", 
                 		returnStdout: true
