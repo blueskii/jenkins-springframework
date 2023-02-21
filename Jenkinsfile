@@ -11,25 +11,25 @@ pipeline {
                 git "https://github.com/blueskii/jenkins-springframework/"
                 sh "mvn clean package"
             }
-
-            post {
-                success {
-                	script {
-	                	RESPONSE = sh (
-	                		script: "curl -v -u admin:tomcat -T target/*.war 'http://blueskii.synology.me:50003/manager/text/deploy?path=/jenkins-springframework&update=true'", 
-	                		returnStdout: true
-	                	).trim()
-	                	
-	                	echo "-----------------3"
-	                	echo "${RESPONSE}"
-	                	echo "-----------------3"
-	                	
-	                	if(RESPONSE.startsWith("OK")) {
-	                	   echo "MyOK"       
-	                	} else {
-	                	   echo "MyFail"   
-	                	}
-	                }
+        }
+        
+        stage("Deploy") {
+            steps {
+                script {
+                    RESPONSE = sh (
+                		script: "curl -v -u admin:tomcat -T target/*.war 'http://blueskii.synology.me:50003/manager/text/deploy?path=/jenkins-springframework&update=true'", 
+                		returnStdout: true
+                	).trim()
+                	
+                	echo "-----------------3"
+                	echo "${RESPONSE}"
+                	echo "-----------------3"
+                	
+                	if(RESPONSE.startsWith("OK")) {
+                	   echo "MyOK"       
+                	} else {
+                	   echo "MyFail"   
+                	}
                 }
             }
         }
