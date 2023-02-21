@@ -15,14 +15,20 @@ pipeline {
             post {
                 success {
                 	script {
-	                	CURL_RESPONSE = sh (
+	                	RESPONSE = sh (
 	                		script: "curl -v -u admin:tomcat -T target/*.war 'http://blueskii.synology.me:50003/manager/text/deploy?path=/jenkins-springframework&update=true'", 
 	                		returnStdout: true
 	                	).trim()
 	                	
 	                	echo "-----------------3"
-	                	echo "${CURL_RESPONSE}"
+	                	echo "${RESPONSE}"
 	                	echo "-----------------3"
+	                	
+	                	if(RESPONSE == "*OK*") {
+	                	   echo "MyOK"       
+	                	} else {
+	                	   echo "MyFail"   
+	                	}
 	                }
                 }
             }
